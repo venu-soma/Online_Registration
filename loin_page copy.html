@@ -9,21 +9,19 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <style>
         .background {
-
+            position: relative;
             background: url("images/gsh background.png");
             background-size: cover;
             height: 100vh;
             margin: auto;
             width: 80%;
             /* background-color: black; */
-            /* box-shadow: 0 0 10px black; */
+            box-shadow: 0 0 10px black;
         }
-
         .header-row {
             /* border: 1px solid gray; */
             height: 55px;
         }
-
         .icon {
             float: left;
             line-height: 33px;
@@ -32,28 +30,26 @@
             font-size: 28px;
             margin: 12px 2px 10px 5px;
         }
-
+        .icon button {
+            background: none;
+            border: none;
+        }
         .logo {
             float: left;
             width: 3%;
             margin-top: 5px;
             /* border: 1px solid pink; */
         }
-
         .logo img {
             width: 100%;
             height: 50px;
-
         }
-
         .title {
             float: left;
             width: 86%;
-
             margin-top: 5px;
             /* border: 1px solid pink; */
         }
-
         .title h1 {
             /* line-height: 62px; */
             font-size: 16px;
@@ -61,45 +57,32 @@
             margin-top: 20px;
             padding: none;
         }
-
-        .login-content {
-            position: relative;
-            /* border: 1px solid rebeccapurple; */
-            height: 92%;
+        .frm {
+            
+            box-shadow: 0 0 10px black;
+            width: 25%;
+            height: 390px;
+            background-color: rgba(255, 255, 255, 0.5);
+            position: absolute;
+            top: 25%;
+            right: 100px;
+            /* transform: translate(-50%, -50%); */
         }
-
         .login-row {
-            padding: 20px;
-            margin: auto;
-            width: 30%;
-            height: 350px;
-            background: rgba(255, 255, 255, 0.8);
-            /* background-color: white transparent; */
-            /* border: 1px solid red; */
-            position: absolute;
-            top: 80px;
-            right: 25px;
+            margin: 30px;
+    
         }
-
         .login-row1 {
-
-            width: 30%;
-            background: rgba(255, 255, 255, 0.8);
-            /* border: 1px solid red; */
-            position: absolute;
-            right: 25px;
-            top: 383px;
+            margin-top: 60px;
+        
         }
-
         .login,
         .signup {
             width: 100%;
             background-color: navy;
-
+            text-transform: uppercase;
             border: none;
             font-size: 14px;
-
-
             padding: 12px;
         }
 
@@ -109,15 +92,13 @@
             text-decoration: none;
         }
 
-
         .user,
         .password {
-            border-bottom: 1.5px solid; 
+            border-bottom: 1.5px solid;
         }
-
         .user input,
         .password input {
-            margin-top: 20px;
+            margin-top: 5px;
             width: 100%;
             padding: 10px;
             font-size: 14px;
@@ -125,44 +106,85 @@
             background: transparent;
             color: blue;
         }
-
         .chkbox,
         .forgot {
             font-size: 14px;
             margin: 15px 0;
         }
-
         .forgot a {
             text-decoration: none;
             color: black;
-
+        }
+        .menu {
+            position: fixed;
+            left: 10%;
+            background-color: rgba(0, 0, 0, 0.5);
+            width: 200px;
+            height: 100vh;
+            display: none;
+        }
+        .menu-ul li {
+            padding: 20px 40px 10px;
+        }
+        .menu-ul li a {
+            text-decoration: none;
+            color: white;
         }
 
+        .nav-bottom {
+            margin-top: 50px;
+            text-align: center;
+            color: white;
+            font-size: 10px;
+        }
     </style>
 </head>
 
 <body>
     <div class="background">
         <header class="header-row">
-            <div class="icon">&#9776;</div>
+            <div class="icon"><button onclick="showMenu()">&#9776;</button></div>
             <div class="logo">
                 <img src="images/logo with out background.png" alt="">
-            </div>  
+            </div>
 
             <div class="title">
                 <h1>Get Set Healthy</h1>
             </div>
         </header>
+        <nav class="menu" id="myDIV">
+            <ul class="menu-ul">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">Follow Us</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Careers</a></li>
+                <li><a href="#">Clients</a></li>
+                <li><a href="#">Partners</a></li>
+                <li><a href="#">Sitemap</a></li>
+                <li><a href="#">Policies</a></li>
+                <li><a href="#">Help</a></li>
+            </ul>
 
+            <footer class="nav-bottom">
+                <p>Copyrights &copy</p>
+                <p>Get Set Healthy Pvt Ltd. All Rights Reserved</p>
+            </footer>
+        </nav>
         <section class="login-content">
             <form action="#" class="frm">
                 <div class="login-row">
                     <div class="user">
                         <input type="text" placeholder="Email id / Phone Number">
+                        
                     </div>
+                    <span id="user-email">xyz</span>
                     <div class="password">
                         <input type="password" placeholder="Password">
+                        
                     </div>
+                    <span id="user-pwd">xyz</span>
                     <div class="chkbox">
                         <input type="checkbox"><label for="checkbox">Remember me</label>
 
@@ -179,13 +201,12 @@
 
 
                 </div>
+
                 <div class="login-row1">
                     <button class="signup">
                         <a href="signup.html">SignUp</a>
                     </button>
                 </div>
-
-
             </form>
         </section>
 
@@ -194,5 +215,13 @@
     <script src="js/jquery.min.js"></script>
     <script>
 
+        function showMenu() {
+            var x = document.getElementById("myDIV");
+            if (x.style.display == "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
     </script>
 </body>
